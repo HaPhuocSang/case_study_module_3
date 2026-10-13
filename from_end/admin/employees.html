@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý nhân viên - PhoneStore</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/employees.css">
+</head>
+<body>
+<header class="admin-header bg-white border-bottom">
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-between px-4"><a href="index.html" class="logo text-decoration-none">Phone<strong>Store</strong></a>
+        <div>Xin chào, <strong>Admin</strong></div>
+    </div>
+</header>
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">⚙️ Quản trị</div>
+        <a class="admin-nav-link " href="admin.html">📊 Tổng quan</a>
+        <a class="admin-nav-link " href="products.html">📱 Sản phẩm</a>
+        <a class="admin-nav-link " href="orders.html">🛒 Đơn hàng</a>
+        <a class="admin-nav-link " href="customers.html">👥 Khách hàng</a>
+        <a class="admin-nav-link " href="feedback.html">💬 Phản hồi</a>
+        <a class="admin-nav-link active" href="employees.html">👨‍💼 Nhân viên</a>
+        <a class="admin-nav-link " href="promotions.html">🏷️ Khuyến mãi</a>
+        <a class="admin-nav-link logout" href="login.html">🚪 Đăng xuất</a>
+    </aside>
+    <main class="admin-main">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2"><h2 class="admin-page-title">Quản
+            lý nhân viên</h2>
+            <button class="btn btn-primary" onclick="alert('Biểu mẫu thêm nhân viên sẽ kết nối backend sau.')">+ Thêm
+                nhân viên
+            </button>
+        </div>
+        <div class="admin-card">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Vai trò</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Phạm Hoàng Nam</td>
+                        <td>nam@phonestore.vn</td>
+                        <td>Quản lý</td>
+                        <td><span class="badge bg-success">Hoạt động</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Võ Thu Trang</td>
+                        <td>trang@phonestore.vn</td>
+                        <td>Nhân viên bán hàng</td>
+                        <td><span class="badge bg-success">Hoạt động</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

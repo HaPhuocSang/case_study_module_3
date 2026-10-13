@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thêm / sửa sản phẩm - PhoneStore</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product-form.css">
+</head>
+<body>
+<header class="admin-header bg-white border-bottom">
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-between px-4"><a href="index.html" class="logo text-decoration-none">Phone<strong>Store</strong></a>
+        <div>Xin chào, <strong>Admin</strong></div>
+    </div>
+</header>
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">⚙️ Quản trị</div>
+        <a class="admin-nav-link " href="admin.html">📊 Tổng quan</a>
+        <a class="admin-nav-link active" href="products.html">📱 Sản phẩm</a>
+        <a class="admin-nav-link " href="orders.html">🛒 Đơn hàng</a>
+        <a class="admin-nav-link " href="customers.html">👥 Khách hàng</a>
+        <a class="admin-nav-link " href="feedback.html">💬 Phản hồi</a>
+        <a class="admin-nav-link " href="employees.html">👨‍💼 Nhân viên</a>
+        <a class="admin-nav-link " href="promotions.html">🏷️ Khuyến mãi</a>
+        <a class="admin-nav-link logout" href="login.html">🚪 Đăng xuất</a>
+    </aside>
+    <main class="admin-main">
+        <h2 class="admin-page-title">Thêm / sửa sản phẩm</h2>
+        <div class="admin-card">
+            <form onsubmit="event.preventDefault();alert('Đây là giao diện mẫu. Khi tích hợp backend, biểu mẫu sẽ gửi dữ liệu đến Servlet.');">
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Tên sản phẩm</label><input class="form-control"
+                                                                                               required
+                                                                                               placeholder="Ví dụ: iPhone 16 Pro">
+                    </div>
+                    <div class="col-md-6"><label class="form-label">Thương hiệu</label><select class="form-select">
+                        <option>Apple</option>
+                        <option>Samsung</option>
+                        <option>Xiaomi</option>
+                        <option>OPPO</option>
+                    </select></div>
+                    <div class="col-md-6"><label class="form-label">Giá bán (VNĐ)</label><input type="number" min="0"
+                                                                                                class="form-control"
+                                                                                                required></div>
+                    <div class="col-md-6"><label class="form-label">Giá khuyến mãi (VNĐ)</label><input type="number"
+                                                                                                       min="0"
+                                                                                                       class="form-control">
+                    </div>
+                    <div class="col-md-6"><label class="form-label">Số lượng tồn kho</label><input type="number" min="0"
+                                                                                                   class="form-control"
+                                                                                                   required></div>
+                    <div class="col-md-6"><label class="form-label">Trạng thái</label><select class="form-select">
+                        <option>Đang bán</option>
+                        <option>Hết hàng</option>
+                        <option>Ẩn</option>
+                    </select></div>
+                    <div class="col-12"><label class="form-label">Ảnh sản phẩm</label><input type="file"
+                                                                                             class="form-control"
+                                                                                             accept="image/*"></div>
+                    <div class="col-12"><label class="form-label">Mô tả</label><textarea class="form-control"
+                                                                                         rows="4"></textarea></div>
+                </div>
+                <div class="mt-4 d-flex gap-2">
+                    <button class="btn btn-primary">Lưu sản phẩm</button>
+                    <a href="products.html" class="btn btn-outline-secondary">Hủy</a></div>
+            </form>
+        </div>
+    </main>
+</div>
+<script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

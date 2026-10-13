@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý khách hàng - PhoneStore</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customers.css">
+</head>
+<body>
+<header class="admin-header bg-white border-bottom">
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-between px-4"><a href="index.html" class="logo text-decoration-none">Phone<strong>Store</strong></a>
+        <div>Xin chào, <strong>Admin</strong></div>
+    </div>
+</header>
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">⚙️ Quản trị</div>
+        <a class="admin-nav-link " href="admin.html">📊 Tổng quan</a>
+        <a class="admin-nav-link " href="products.html">📱 Sản phẩm</a>
+        <a class="admin-nav-link " href="orders.html">🛒 Đơn hàng</a>
+        <a class="admin-nav-link active" href="customers.html">👥 Khách hàng</a>
+        <a class="admin-nav-link " href="feedback.html">💬 Phản hồi</a>
+        <a class="admin-nav-link " href="employees.html">👨‍💼 Nhân viên</a>
+        <a class="admin-nav-link " href="promotions.html">🏷️ Khuyến mãi</a>
+        <a class="admin-nav-link logout" href="login.html">🚪 Đăng xuất</a>
+    </aside>
+    <main class="admin-main">
+        <h2 class="admin-page-title">Quản lý khách hàng</h2>
+        <div class="admin-card">
+            <div class="mb-3"><input class="form-control" placeholder="Tìm tên, email hoặc số điện thoại"></div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Số đơn hàng</th>
+                        <th>Ngày tham gia</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>vana@example.com</td>
+                        <td>0901234567</td>
+                        <td>3</td>
+                        <td>01/09/2026</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Trần Thị B</td>
+                        <td>thib@example.com</td>
+                        <td>0912345678</td>
+                        <td>5</td>
+                        <td>15/08/2026</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lê Văn C</td>
+                        <td>vanc@example.com</td>
+                        <td>0987654321</td>
+                        <td>1</td>
+                        <td>02/10/2026</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

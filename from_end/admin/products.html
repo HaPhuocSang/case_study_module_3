@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý sản phẩm - PhoneStore</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background: #f5f7fb
+        }
+
+        .admin-header {
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        .admin-layout {
+            min-height: calc(100vh - 70px);
+            display: flex
+        }
+
+        .admin-sidebar {
+            width: 245px;
+            background: #111827;
+            color: #fff;
+            padding: 20px 14px;
+            flex-shrink: 0
+        }
+
+        .admin-sidebar-title {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 0 12px 18px;
+            border-bottom: 1px solid #374151;
+            margin-bottom: 14px
+        }
+
+        .admin-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 11px 13px;
+            border-radius: 9px;
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 15px
+        }
+
+        .admin-nav-link:hover, .admin-nav-link.active {
+            background: #2563eb;
+            color: #fff
+        }
+
+        .admin-nav-link.logout {
+            margin-top: 16px;
+            color: #fca5a5
+        }
+
+        .admin-main {
+            flex: 1;
+            min-width: 0;
+            padding: 28px
+        }
+
+        .admin-page-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 22px
+        }
+
+        .admin-card, .stat-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .03)
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700
+        }
+
+        .admin-table img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain
+        }
+
+        .chat-box {
+            height: 360px;
+            overflow: auto;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px
+        }
+
+        .chat-message {
+            max-width: 78%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px
+        }
+
+        .chat-message.customer {
+            background: #e5e7eb
+        }
+
+        .chat-message.admin {
+            background: #dbeafe;
+            margin-left: auto
+        }
+
+        @media (max-width: 900px) {
+            .admin-layout {
+                display: block
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                padding: 12px
+            }
+
+            .admin-sidebar-title {
+                padding-bottom: 10px;
+                margin-bottom: 8px
+            }
+
+            .admin-nav-link {
+                display: inline-flex;
+                width: auto;
+                margin-right: 3px;
+                padding: 9px
+            }
+
+            .admin-main {
+                padding: 16px
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="admin-header bg-white border-bottom">
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-between px-4"><a href="index.html" class="logo text-decoration-none">Phone<strong>Store</strong></a>
+        <div>Xin chào, <strong>Admin</strong></div>
+    </div>
+</header>
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">⚙️ Quản trị</div>
+        <a class="admin-nav-link " href="admin.html">📊 Tổng quan</a>
+        <a class="admin-nav-link active" href="products.html">📱 Sản phẩm</a>
+        <a class="admin-nav-link " href="orders.html">🛒 Đơn hàng</a>
+        <a class="admin-nav-link " href="customers.html">👥 Khách hàng</a>
+        <a class="admin-nav-link " href="feedback.html">💬 Phản hồi</a>
+        <a class="admin-nav-link " href="employees.html">👨‍💼 Nhân viên</a>
+        <a class="admin-nav-link " href="promotions.html">🏷️ Khuyến mãi</a>
+        <a class="admin-nav-link logout" href="login.html">🚪 Đăng xuất</a>
+    </aside>
+    <main class="admin-main">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4"><h2
+                class="admin-page-title mb-0">Quản lý sản phẩm</h2><a href="product-form.html" class="btn btn-primary">+
+            Thêm sản phẩm</a></div>
+        <div class="admin-card">
+            <div class="row g-2 mb-3">
+                <div class="col-md-6"><input class="form-control" id="searchProduct" placeholder="Tìm tên sản phẩm...">
+                </div>
+                <div class="col-md-3"><select class="form-select">
+                    <option>Tất cả thương hiệu</option>
+                    <option>Apple</option>
+                    <option>Samsung</option>
+                    <option>Xiaomi</option>
+                </select></div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle admin-table" id="productsTable">
+                    <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>ID</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Thương hiệu</th>
+                        <th>Giá</th>
+                        <th>Tồn kho</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><img src="assets/iphone.jpg" alt="iPhone"></td>
+                        <td>1</td>
+                        <td>iPhone 16 Pro</td>
+                        <td>Apple</td>
+                        <td>27.990.000đ</td>
+                        <td>20</td>
+                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/samsung.jpg" alt="Samsung"></td>
+                        <td>2</td>
+                        <td>Galaxy S25 Ultra</td>
+                        <td>Samsung</td>
+                        <td>29.490.000đ</td>
+                        <td>15</td>
+                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/xiaomi.jpg" alt="Xiaomi"></td>
+                        <td>3</td>
+                        <td>Xiaomi 15 Ultra</td>
+                        <td>Xiaomi</td>
+                        <td>24.990.000đ</td>
+                        <td>12</td>
+                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>document.getElementById('searchProduct').addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('#productsTable tbody tr').forEach(r => r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none')
+        });</script>
+    </main>
+</div>
+<script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
