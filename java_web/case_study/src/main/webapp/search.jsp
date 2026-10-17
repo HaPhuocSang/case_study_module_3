@@ -1,0 +1,169 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 16/10/2026
+  Time: 8:42 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Tìm kiếm sản phẩm</title>
+    <c:import url="views/library/user/index.jsp"/>
+    <c:import url="views/library/user/search.jsp"/>
+</head>
+<body>
+<header class="site-header bg-white">
+    <div class="container header-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>Phone<span>Store</span></strong><small>Điện thoại chính hãng</small></span>
+        </a>
+        <nav class="main-nav">
+            <a class="active" href="index.html">Trang chủ</a>
+            <div class="nav-dropdown dropdown">
+                <a class="dropdown-toggle" href="index.html#products" role="button" data-bs-toggle="dropdown" aria-expanded="false">Điện thoại</a>
+                <ul class="dropdown-menu brand-dropdown">
+                    <li><a class="dropdown-item" href="search.html?brand=iPhone">iPhone</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Samsung">Samsung</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Xiaomi">Xiaomi</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=OPPO">OPPO</a></li>
+                </ul>
+            </div>
+            <a href="index.html#about">Giới thiệu</a>
+            <a href="index.html#contact">Liên hệ</a>
+            <a  href="feedback-user.html">Phản hồi</a>
+        </nav>
+        <div class="header-actions">
+            <form class="search-box" action="search.html" method="get">
+                <input type="text" name="keyword" placeholder="Tìm kiếm điện thoại..." aria-label="Tìm kiếm điện thoại">
+                <button type="submit" aria-label="Tìm kiếm">⌕</button>
+            </form>
+            <div class="account-dropdown dropdown">
+                <button class="icon-btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Tài khoản">♙</button>
+                <ul class="dropdown-menu dropdown-menu-end account-menu">
+                    <li><a class="dropdown-item" href="profile.html">👤 Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="feedback-user.html">✉ Phản hồi & hỗ trợ</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="login.html">↪ Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="register.html">＋ Đăng ký</a></li>
+                </ul>
+            </div>
+            <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">
+                🛒 <span id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+<main class="container py-5">
+    <div class="mb-4">
+        <h2 class="fw-bold mb-1">Tìm kiếm sản phẩm</h2>
+        <p class="text-muted mb-0">Tìm điện thoại theo tên hoặc thương hiệu</p>
+    </div>
+
+    <div class="card border-0 shadow-sm p-3 mb-4">
+        <form id="searchForm" class="row g-2">
+            <div class="col-lg-5">
+                <input id="searchInput" class="form-control form-control-lg" name="keyword"
+                       placeholder="Nhập tên sản phẩm...">
+            </div>
+            <div class="col-lg-3">
+                <select id="brandFilter" class="form-select form-select-lg" name="brand">
+                    <option value="">Tất cả thương hiệu</option>
+                    <option value="iPhone">iPhone</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="OPPO">OPPO</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <select id="sortPrice" class="form-select form-select-lg" name="sort">
+                    <option value="">Sắp xếp</option>
+                    <option value="asc">Giá thấp → cao</option>
+                    <option value="desc">Giá cao → thấp</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-dark btn-lg w-100" type="submit">🔍 Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">Kết quả tìm kiếm</h5>
+        <span class="text-muted"><strong id="resultCount">0</strong> sản phẩm</span>
+    </div>
+
+    <div id="productList" class="row g-4">
+        <div class="col-md-6 col-lg-3" data-product-card data-name="iPhone 17 Pro Max" data-brand="iPhone"
+             data-price="34990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/iphone.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="iPhone 17 Pro Max">
+                <div class="card-body"><span class="badge text-bg-light mb-2">iPhone</span><h5>iPhone 17 Pro Max</h5>
+                    <p class="fw-bold mb-3">34.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-product-card data-name="iPhone 16 Pro" data-brand="iPhone"
+             data-price="28990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/iphone.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="iPhone 16 Pro">
+                <div class="card-body"><span class="badge text-bg-light mb-2">iPhone</span><h5>iPhone 16 Pro</h5>
+                    <p class="fw-bold mb-3">28.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-product-card data-name="Samsung Galaxy S25 Ultra" data-brand="Samsung"
+             data-price="33990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/samsung.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="Samsung Galaxy S25 Ultra">
+                <div class="card-body"><span class="badge text-bg-light mb-2">Samsung</span><h5>Samsung Galaxy S25
+                    Ultra</h5>
+                    <p class="fw-bold mb-3">33.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-product-card data-name="Samsung Galaxy S25+" data-brand="Samsung"
+             data-price="26990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/samsung.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="Samsung Galaxy S25+">
+                <div class="card-body"><span class="badge text-bg-light mb-2">Samsung</span><h5>Samsung Galaxy S25+</h5>
+                    <p class="fw-bold mb-3">26.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-product-card data-name="Xiaomi 15 Ultra" data-brand="Xiaomi"
+             data-price="29990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/xiaomi.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="Xiaomi 15 Ultra">
+                <div class="card-body"><span class="badge text-bg-light mb-2">Xiaomi</span><h5>Xiaomi 15 Ultra</h5>
+                    <p class="fw-bold mb-3">29.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-product-card data-name="OPPO Find X8" data-brand="OPPO"
+             data-price="21990000">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="assets/oppo.png" class="card-img-top p-3" style="height:220px;object-fit:contain"
+                     alt="OPPO Find X8">
+                <div class="card-body"><span class="badge text-bg-light mb-2">OPPO</span><h5>OPPO Find X8</h5>
+                    <p class="fw-bold mb-3">21.990.000đ</p><a href="product-detail.html"
+                                                              class="btn btn-outline-dark w-100">Xem chi tiết</a></div>
+            </div>
+        </div>
+    </div>
+</main>
+<c:import url="views/layout/user/footer.jsp"/>
+<c:import url="views/layout/user/cart-panel.jsp"/>
+</body>
+</html>
+

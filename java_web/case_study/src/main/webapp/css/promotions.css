@@ -1,0 +1,140 @@
+body {
+    background: #f5f7fb
+}
+
+.admin-header {
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 10
+}
+
+.admin-layout {
+    min-height: calc(100vh - 70px);
+    display: flex
+}
+
+.admin-sidebar {
+    width: 245px;
+    background: #111827;
+    color: #fff;
+    padding: 20px 14px;
+    flex-shrink: 0
+}
+
+.admin-sidebar-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 12px 18px;
+    border-bottom: 1px solid #374151;
+    margin-bottom: 14px
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 11px 13px;
+    border-radius: 9px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 15px
+}
+
+.admin-nav-link:hover, .admin-nav-link.active {
+    background: #2563eb;
+    color: #fff
+}
+
+.admin-nav-link.logout {
+    margin-top: 16px;
+    color: #fca5a5
+}
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+    padding: 28px
+}
+
+.admin-page-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 22px
+}
+
+.admin-card, .stat-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .03)
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700
+}
+
+.admin-table img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain
+}
+
+.chat-box {
+    height: 360px;
+    overflow: auto;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px
+}
+
+.chat-message {
+    max-width: 78%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 12px
+}
+
+.chat-message.customer {
+    background: #e5e7eb
+}
+
+.chat-message.admin {
+    background: #dbeafe;
+    margin-left: auto
+}
+
+@media (max-width: 900px) {
+    .admin-layout {
+        display: block
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        padding: 12px
+    }
+
+    .admin-sidebar-title {
+        padding-bottom: 10px;
+        margin-bottom: 8px
+    }
+
+    .admin-nav-link {
+        display: inline-flex;
+        width: auto;
+        margin-right: 3px;
+        padding: 9px
+    }
+
+    .admin-main {
+        padding: 16px
+    }
+}

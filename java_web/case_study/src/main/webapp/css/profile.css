@@ -1,0 +1,52 @@
+.profile-wrap {
+    background: #f6f8fb;
+    min-height: calc(100vh - 80px);
+    padding: 40px 0
+}
+
+.profile-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 25px
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #e9f2ff;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    margin: auto
+}
+
+.profile-menu a {
+    display: block;
+    padding: 13px 15px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    cursor: pointer
+}
+
+.profile-menu a.active, .profile-menu a:hover {
+    background: #e9f2ff;
+    color: #0d6efd
+}
+
+.profile-section {
+    display: none
+}
+
+.profile-section.active {
+    display: block
+}
+
+.order-status {
+    font-size: 13px
+}
