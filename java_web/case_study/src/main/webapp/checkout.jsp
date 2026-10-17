@@ -1,0 +1,89 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 16/10/2026
+  Time: 8:22 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Đặt hàng - PhoneStore</title>
+    <c:import url="views/library/user/index.jsp"/>
+    <c:import url="views/library/user/checkout.jsp"/>
+</head>
+<body>
+<c:import url="views/layout/user/header.jsp"/>
+<main class="container checkout-page">
+    <div class="mb-4">
+        <h2>Thông tin đặt hàng</h2>
+        <p class="text-muted mb-0">Nhập thông tin người nhận và chọn phương thức thanh toán</p>
+    </div>
+    <div class="step"><span>1</span> Thông tin nhận hàng <b>→</b> <span>2</span> Thanh toán <b>→</b> <span>3</span> Đặt hàng</div>
+    <form id="checkoutForm">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="checkout-card mb-4">
+                    <h4>Thông tin người nhận</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6"><label class="form-label">Họ và tên *</label><input type="text" class="form-control" required placeholder="Nguyễn Văn A"></div>
+                        <div class="col-md-6"><label class="form-label">Số điện thoại *</label><input type="tel" class="form-control" required placeholder="0901234567"></div>
+                        <div class="col-12"><label class="form-label">Email *</label><input type="email" class="form-control" required placeholder="email@example.com"></div>
+                        <div class="col-md-5">
+                            <label class="form-label">Tỉnh / Thành phố *</label>
+                            <select class="form-select" required>
+                                <option value="">Chọn tỉnh / thành phố</option>
+                                <option>Đà Nẵng</option>
+                                <option>Hà Nội</option>
+                                <option>TP. Hồ Chí Minh</option>
+                                <option>Quảng Nam</option>
+                            </select></div>
+                        <div class="col-md-7"><label class="form-label">Địa chỉ nhận hàng *</label><input type="text" class="form-control" required placeholder="Số nhà, đường, phường/xã...">
+                        </div>
+                        <div class="col-12"><label class="form-label">Ghi chú</label><textarea class="form-control" rows="3" placeholder="Ví dụ: Giao hàng giờ hành chính..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h4>Phương thức thanh toán</h4>
+                    <label class="payment-option"><input type="radio" name="payment" value="cod" checked> <strong>Thanh
+                        toán khi nhận hàng (COD)</strong><br><small class="text-muted ms-4">Thanh toán trực tiếp cho
+                        nhân viên giao hàng.</small></label>
+                    <label class="payment-option"><input type="radio" name="payment" value="bank"> <strong>Chuyển khoản
+                        ngân hàng</strong><br><small class="text-muted ms-4">Thông tin tài khoản sẽ được hiển thị sau
+                        khi đặt hàng.</small></label>
+                    <label class="payment-option"><input type="radio" name="payment" value="wallet"> <strong>Ví điện
+                        tử</strong><br><small class="text-muted ms-4">Thanh toán bằng ví điện tử được hỗ
+                        trợ.</small></label>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="checkout-summary sticky-lg-top" style="top:20px">
+                    <h4>Đơn hàng của bạn</h4>
+                    <div class="order-product"><img src="assets/iphone.png" alt="iPhone 16 Pro">
+                        <div class="flex-grow-1"><strong>iPhone 16 Pro</strong>
+                            <div class="text-muted small">128GB - Titan tự nhiên × 1</div>
+                        </div>
+                        <strong>27.990.000đ</strong></div>
+                    <div class="d-flex justify-content-between mb-3"><span>Tạm tính</span><strong>27.990.000đ</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3"><span>Phí vận chuyển</span><span class="text-success">Miễn phí</span></div>
+                    <hr>
+                    <div class="d-flex justify-content-between fs-5"><strong>Tổng cộng</strong><strong class="text-primary">27.990.000đ</strong></div>
+                    <button type="submit" class="btn btn-primary w-100 mt-4 py-2">Đặt hàng</button>
+                    <a href="cart.html" class="btn btn-outline-secondary w-100 mt-2">← Quay lại giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+<c:import url="views/layout/user/footer.jsp"/>
+<c:import url="views/layout/user/cart-panel.jsp"/>
+</body>
+</html>

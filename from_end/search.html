@@ -15,9 +15,9 @@
             <span><strong>Phone<span>Store</span></strong><small>Điện thoại chính hãng</small></span>
         </a>
         <nav class="main-nav">
-            <a href="index.html">Trang chủ</a>
+            <a class="active" href="index.html">Trang chủ</a>
             <div class="nav-dropdown dropdown">
-                <a class="dropdown-toggle" href="index.html#products" data-bs-toggle="dropdown">Điện thoại</a>
+                <a class="dropdown-toggle" href="index.html#products" role="button" data-bs-toggle="dropdown" aria-expanded="false">Điện thoại</a>
                 <ul class="dropdown-menu brand-dropdown">
                     <li><a class="dropdown-item" href="search.html?brand=iPhone">iPhone</a></li>
                     <li><a class="dropdown-item" href="search.html?brand=Samsung">Samsung</a></li>
@@ -27,23 +27,26 @@
             </div>
             <a href="index.html#about">Giới thiệu</a>
             <a href="index.html#contact">Liên hệ</a>
+            <a  href="feedback-user.html">Phản hồi</a>
         </nav>
         <div class="header-actions">
-            <form id="headerSearchForm" class="search-box" action="search.html">
-                <input id="headerSearchInput" name="keyword" type="text" placeholder="Tìm kiếm điện thoại...">
-                <button type="submit">⌕</button>
+            <form class="search-box" action="search.html" method="get">
+                <input type="text" name="keyword" placeholder="Tìm kiếm điện thoại..." aria-label="Tìm kiếm điện thoại">
+                <button type="submit" aria-label="Tìm kiếm">⌕</button>
             </form>
             <div class="account-dropdown dropdown">
-                <button class="icon-btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">♙</button>
+                <button class="icon-btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Tài khoản">♙</button>
                 <ul class="dropdown-menu dropdown-menu-end account-menu">
                     <li><a class="dropdown-item" href="profile.html">👤 Hồ sơ</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+                    <li><a class="dropdown-item" href="feedback-user.html">✉ Phản hồi & hỗ trợ</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="login.html">↪ Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="register.html">＋ Đăng ký</a></li>
                 </ul>
             </div>
-            <a class="icon-btn cart-btn text-decoration-none" href="cart.html">🛒 <span id="cartCount">0</span></a>
+            <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">
+                🛒 <span id="cartCount">0</span>
+            </button>
         </div>
     </div>
 </header>
@@ -150,7 +153,40 @@
         </div>
     </div>
 </main>
+<footer id="contact">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>PhoneStore</strong><small>Điện thoại chính hãng</small></span>
+        </div>
+        <div class="footer-links">
+            <a href="#">Trang chủ</a><a href="#products">Điện thoại</a><a href="#about">Giới thiệu</a><a href="#contact">Liên hệ</a>
+        </div>
+        <div class="socials">● &nbsp; ● &nbsp; ● &nbsp; ♪</div>
+        <small>© 2025 PhoneStore. All rights reserved.</small>
+    </div>
+</footer>
+<div class="offcanvas offcanvas-end cart-panel" tabindex="-1" id="cartPanel">
+    <div class="offcanvas-header">
+        <h5 class="fw-bold">Giỏ hàng (<span id="cartTitleCount">0</span>)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cartItems"></div>
+        <div id="emptyCart" class="empty-cart">
+            <div>🛒</div>
+            <b>Giỏ hàng đang trống</b>
+            <small>Hãy chọn sản phẩm bạn muốn mua.</small>
+        </div>
+        <div id="cartBottom" class="cart-bottom d-none">
+            <div class="total-line"><b>Tổng cộng:</b><strong id="cartTotal">0đ</strong></div>
+            <button class="checkout-btn">Thanh toán</button>
+            <button class="view-cart-btn">Xem giỏ hàng</button>
+        </div>
+    </div>
+</div>
 <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+<script src="js/index.js"></script>
 <script src="js/search.js"></script>
 </body>
 </html>

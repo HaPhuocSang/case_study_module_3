@@ -10,38 +10,44 @@
 </head>
 <body>
 <header class="site-header bg-white">
-    <div class="container header-inner"><a href="index.html" class="brand"><span
-            class="brand-icon">▯</span><span><strong>Phone<span>Store</span></strong><small>Điện thoại chính hãng</small></span></a>
-        <nav class="main-nav"><a href="index.html">Trang chủ</a>
-            <div class="nav-dropdown dropdown"><a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">Điện
-                thoại</a>
+    <div class="container header-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>Phone<span>Store</span></strong><small>Điện thoại chính hãng</small></span>
+        </a>
+        <nav class="main-nav">
+            <a class="active" href="index.html">Trang chủ</a>
+            <div class="nav-dropdown dropdown">
+                <a class="dropdown-toggle" href="index.html#products" role="button" data-bs-toggle="dropdown" aria-expanded="false">Điện thoại</a>
                 <ul class="dropdown-menu brand-dropdown">
-                    <li><a class="dropdown-item" href="product-detail.html?id=iphone16pro">iPhone</a></li>
-                    <li><a class="dropdown-item" href="product-detail.html?id=s25ultra">Samsung</a></li>
-                    <li><a class="dropdown-item" href="product-detail.html?id=xiaomi15">Xiaomi</a></li>
-                    <li><a class="dropdown-item" href="product-detail.html?id=oppofindx8">OPPO</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=iPhone">iPhone</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Samsung">Samsung</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Xiaomi">Xiaomi</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=OPPO">OPPO</a></li>
                 </ul>
             </div>
-            <a href="#">Giới thiệu</a><a href="#">Liên hệ</a></nav>
+            <a href="index.html#about">Giới thiệu</a>
+            <a href="index.html#contact">Liên hệ</a>
+            <a  href="feedback-user.html">Phản hồi</a>
+        </nav>
         <div class="header-actions">
-            <div class="search-box"><input placeholder="Tìm kiếm điện thoại...">
-                <button>⌕</button>
-            </div>
+            <form class="search-box" action="search.html" method="get">
+                <input type="text" name="keyword" placeholder="Tìm kiếm điện thoại..." aria-label="Tìm kiếm điện thoại">
+                <button type="submit" aria-label="Tìm kiếm">⌕</button>
+            </form>
             <div class="account-dropdown dropdown">
-                <button class="icon-btn account-btn dropdown-toggle" data-bs-toggle="dropdown">♙</button>
+                <button class="icon-btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Tài khoản">♙</button>
                 <ul class="dropdown-menu dropdown-menu-end account-menu">
-                    <li><a class="dropdown-item" href="#">👤 Hồ sơ</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <button class="dropdown-item logout-item" onclick="alert('Bạn đã đăng xuất.')">↪ Đăng xuất
-                        </button>
-                    </li>
+                    <li><a class="dropdown-item" href="profile.html">👤 Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="feedback-user.html">✉ Phản hồi & hỗ trợ</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="login.html">↪ Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="register.html">＋ Đăng ký</a></li>
                 </ul>
             </div>
-            <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">🛒 <span
-                    id="cartCount">0</span></button>
+            <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">
+                🛒 <span id="cartCount">0</span>
+            </button>
         </div>
     </div>
 </header>
@@ -92,12 +98,18 @@
         </div>
     </div>
     <a href="index.html" style="display:inline-block;margin-top:22px;color:#1475f5;text-decoration:none">← Quay lại trang sản phẩm</a></main>
-<footer>
+<footer id="contact">
     <div class="container footer-inner">
-        <div class="footer-brand"><span class="brand-icon">▯</span><span><strong>PhoneStore</strong><small>Điện thoại chính hãng</small></span>
+        <div class="footer-brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>PhoneStore</strong><small>Điện thoại chính hãng</small></span>
         </div>
-        <div class="footer-links"><a href="index.html">Trang chủ</a><a href="index.html#products">Điện thoại</a><a href="#">Giới thiệu</a><a href="#">Liên hệ</a></div>
-        <small>© 2025 PhoneStore. All rights reserved.</small></div>
+        <div class="footer-links">
+            <a href="#">Trang chủ</a><a href="#products">Điện thoại</a><a href="#about">Giới thiệu</a><a href="#contact">Liên hệ</a>
+        </div>
+        <div class="socials">● &nbsp; ● &nbsp; ● &nbsp; ♪</div>
+        <small>© 2025 PhoneStore. All rights reserved.</small>
+    </div>
 </footer>
 <div class="offcanvas offcanvas-end cart-panel" tabindex="-1" id="cartPanel">
     <div class="offcanvas-header"><h5 class="fw-bold">Giỏ hàng (<span id="cartTitleCount">0</span>)</h5>

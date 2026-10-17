@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phản hồi & hỗ trợ - PhoneStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/feedback-user.css">
+</head>
+<body>
+<header class="site-header bg-white">
+    <div class="container header-inner">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>Phone<span>Store</span></strong><small>Điện thoại chính hãng</small></span>
+        </a>
+        <nav class="main-nav">
+            <a class="active" href="index.html">Trang chủ</a>
+            <div class="nav-dropdown dropdown">
+                <a class="dropdown-toggle" href="index.html#products" role="button" data-bs-toggle="dropdown" aria-expanded="false">Điện thoại</a>
+                <ul class="dropdown-menu brand-dropdown">
+                    <li><a class="dropdown-item" href="search.html?brand=iPhone">iPhone</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Samsung">Samsung</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=Xiaomi">Xiaomi</a></li>
+                    <li><a class="dropdown-item" href="search.html?brand=OPPO">OPPO</a></li>
+                </ul>
+            </div>
+            <a href="index.html#about">Giới thiệu</a>
+            <a href="index.html#contact">Liên hệ</a>
+            <a  href="feedback-user.html">Phản hồi</a>
+        </nav>
+        <div class="header-actions">
+            <form class="search-box" action="search.html" method="get">
+                <input type="text" name="keyword" placeholder="Tìm kiếm điện thoại..." aria-label="Tìm kiếm điện thoại">
+                <button type="submit" aria-label="Tìm kiếm">⌕</button>
+            </form>
+            <div class="account-dropdown dropdown">
+                <button class="icon-btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Tài khoản">♙</button>
+                <ul class="dropdown-menu dropdown-menu-end account-menu">
+                    <li><a class="dropdown-item" href="profile.html">👤 Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="feedback-user.html">✉ Phản hồi & hỗ trợ</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="login.html">↪ Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="register.html">＋ Đăng ký</a></li>
+                </ul>
+            </div>
+            <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">
+                🛒 <span id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+<main class="feedback-page">
+    <div class="container">
+        <div class="mb-4"><h2 class="mb-2">Phản hồi & hỗ trợ khách hàng</h2>
+            <p class="text-muted mb-0">Gửi câu hỏi, góp ý hoặc yêu cầu hỗ trợ. Nhân viên PhoneStore sẽ phản hồi trong hội thoại của bạn.</p></div>
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <section class="feedback-panel h-100">
+                    <div class="support-heading mb-3">
+                        <div class="support-icon">✉</div>
+                        <div><h4 class="mb-1">Gửi phản hồi mới</h4>
+                            <div class="text-muted small">Các mục có dấu * là bắt buộc</div>
+                        </div>
+                    </div>
+                    <form id="feedbackForm">
+                        <div class="mb-3"><label class="form-label" for="feedbackTopic">Chủ đề *</label><select class="form-select" id="feedbackTopic" required>
+                            <option value="">-- Chọn chủ đề --</option>
+                            <option>Hỏi về sản phẩm</option>
+                            <option>Đơn hàng và giao hàng</option>
+                            <option>Bảo hành / đổi trả</option>
+                            <option>Thanh toán</option>
+                            <option>Góp ý dịch vụ</option>
+                            <option>Khác</option>
+                        </select></div>
+                        <div class="mb-3"><label class="form-label" for="feedbackOrder">Mã đơn hàng (nếu có)</label><input class="form-control" id="feedbackOrder" placeholder="Ví dụ: DH001"></div>
+                        <div class="mb-3"><label class="form-label" for="feedbackTitle">Tiêu đề *</label><input class="form-control" id="feedbackTitle" maxlength="100" required placeholder="Tóm tắt vấn đề bạn cần hỗ trợ"></div>
+                        <div class="mb-3"><label class="form-label" for="feedbackMessage">Nội dung phản hồi *</label><textarea class="form-control" id="feedbackMessage" rows="5" maxlength="1500" required placeholder="Mô tả chi tiết câu hỏi hoặc góp ý của bạn..."></textarea>
+                            <div class="form-hint mt-1">Không nhập mật khẩu hoặc thông tin thanh toán nhạy cảm.</div>
+                        </div>
+                        <button class="btn btn-primary w-100" type="submit">Gửi phản hồi</button>
+                        <div id="feedbackNotice" class="alert alert-success mt-3 mb-0 d-none" role="status"></div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-lg-7">
+                <section class="feedback-panel">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                        <div><h4 class="mb-1">Phản hồi của tôi</h4>
+                            <p class="text-muted small mb-0">Theo dõi trạng thái và xem trao đổi với Admin.</p></div>
+                        <span class="badge text-bg-light border">3 phản hồi mẫu</span></div>
+                    <div class="feedback-list" id="feedbackList">
+                        <div class="feedback-item">
+                            <div class="support-icon">📦</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between flex-wrap gap-2"><strong>Hỏi về tình trạng giao hàng</strong><span class="badge text-bg-success status">Đã phản hồi</span>
+                                </div>
+                                <div class="text-muted small mt-1">Mã #FB003 · Đơn hàng DH002 · 10/10/2026</div>
+                                <p class="mb-2 mt-2 small">Tôi muốn kiểm tra thời gian giao dự kiến của đơn hàng.</p>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-conversation="delivery">Xem hội thoại
+                                </button>
+                                <div class="chat-preview mt-3 d-none" data-chat="delivery">
+                                    <div class="chat-bubble user">Tôi muốn kiểm tra thời gian giao dự kiến của đơn hàng.<span class="chat-time">Khách hàng · 10:15</span></div>
+                                    <div class="chat-bubble admin">Chào bạn, đơn hàng DH002 đang được vận chuyển. Dự kiến giao trong 1–2 ngày làm việc nhé!<span class="chat-time">PhoneStore · 10:42</span></div>
+                                    <form class="reply-form d-flex gap-2 mt-3"><input class="form-control form-control-sm" required placeholder="Nhập tin nhắn...">
+                                        <button class="btn btn-primary btn-sm">Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-item">
+                            <div class="support-icon">🛠️</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between flex-wrap gap-2"><strong>Chính sách bảo hành</strong><span class="badge text-bg-warning status">Đang xử lý</span></div>
+                                <div class="text-muted small mt-1">Mã #FB002 · 08/10/2026</div>
+                                <p class="mb-2 mt-2 small">Tôi cần tìm hiểu điều kiện bảo hành sản phẩm.</p>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-conversation="warranty">Xem hội thoại
+                                </button>
+                                <div class="chat-preview mt-3 d-none" data-chat="warranty">
+                                    <div class="chat-bubble user">Tôi cần tìm hiểu điều kiện bảo hành sản phẩm.<span class="chat-time">Khách hàng · 09:20</span></div>
+                                    <div class="chat-bubble admin">PhoneStore đã nhận được yêu cầu. Nhân viên đang kiểm tra thông tin và sẽ phản hồi sớm.<span class="chat-time">PhoneStore · 09:35</span></div>
+                                    <form class="reply-form d-flex gap-2 mt-3"><input class="form-control form-control-sm" required placeholder="Nhập tin nhắn...">
+                                        <button class="btn btn-primary btn-sm">Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-item">
+                            <div class="support-icon">💬</div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between flex-wrap gap-2"><strong>Góp ý trải nghiệm mua hàng</strong><span class="badge text-bg-secondary status">Đã tiếp nhận</span>
+                                </div>
+                                <div class="text-muted small mt-1">Mã #FB001 · 05/10/2026</div>
+                                <p class="mb-2 mt-2 small">Tôi có một số góp ý về trải nghiệm trên website.</p>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-conversation="suggestion">Xem hội thoại</button>
+                                <div class="chat-preview mt-3 d-none" data-chat="suggestion">
+                                    <div class="chat-bubble user">Tôi có một số góp ý về trải nghiệm trên website.<span class="chat-time">Khách hàng · 14:05</span></div>
+                                    <div class="chat-bubble admin">Cảm ơn bạn đã gửi góp ý cho PhoneStore. Chúng tôi đã ghi nhận!<span class="chat-time">PhoneStore · 14:18</span></div>
+                                    <form class="reply-form d-flex gap-2 mt-3"><input class="form-control form-control-sm" required placeholder="Nhập tin nhắn...">
+                                        <button class="btn btn-primary btn-sm">Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-4 mb-0 small">Đây là giao diện mẫu. Khi kết nối JSP/Servlet và database, phản hồi và tin nhắn sẽ được lưu để khách hàng và Admin xem chung một hội thoại.</div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+<footer id="contact">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="brand-icon">▯</span>
+            <span><strong>PhoneStore</strong><small>Điện thoại chính hãng</small></span>
+        </div>
+        <div class="footer-links">
+            <a href="#">Trang chủ</a><a href="#products">Điện thoại</a><a href="#about">Giới thiệu</a><a href="#contact">Liên hệ</a>
+        </div>
+        <div class="socials">● &nbsp; ● &nbsp; ● &nbsp; ♪</div>
+        <small>© 2025 PhoneStore. All rights reserved.</small>
+    </div>
+</footer>
+<div class="offcanvas offcanvas-end cart-panel" tabindex="-1" id="cartPanel">
+    <div class="offcanvas-header">
+        <h5 class="fw-bold">Giỏ hàng (<span id="cartTitleCount">0</span>)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cartItems"></div>
+        <div id="emptyCart" class="empty-cart">
+            <div>🛒</div>
+            <b>Giỏ hàng đang trống</b>
+            <small>Hãy chọn sản phẩm bạn muốn mua.</small>
+        </div>
+        <div id="cartBottom" class="cart-bottom d-none">
+            <div class="total-line"><b>Tổng cộng:</b><strong id="cartTotal">0đ</strong></div>
+            <button class="checkout-btn">Thanh toán</button>
+            <button class="view-cart-btn">Xem giỏ hàng</button>
+        </div>
+    </div>
+</div>
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+<script src="js/index.js"></script>
+<script src="js/feedback-user.js"></script>
+</body>
+</html>
