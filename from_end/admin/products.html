@@ -62,10 +62,22 @@
                         <td>Apple</td>
                         <td>27.990.000đ</td>
                         <td>20</td>
-                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
-                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        <td>
+                            <select class="form-select form-select-sm product-status"
+                                    onchange="updateStatus(this)">
+                                <option value="selling" selected>Đang bán</option>
+                                <option value="stopped">Ngừng bán</option>
+                                <option value="out_of_stock">Hết hàng</option>
+                                <option value="hidden">Ẩn</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger"
+                                    onclick="this.closest('tr').remove()">Xóa</button>
                         </td>
                     </tr>
+
                     <tr>
                         <td><img src="assets/samsung.jpg" alt="Samsung"></td>
                         <td>2</td>
@@ -73,10 +85,22 @@
                         <td>Samsung</td>
                         <td>29.490.000đ</td>
                         <td>15</td>
-                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
-                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        <td>
+                            <select class="form-select form-select-sm product-status"
+                                    onchange="updateStatus(this)">
+                                <option value="selling" selected>Đang bán</option>
+                                <option value="stopped">Ngừng bán</option>
+                                <option value="out_of_stock">Hết hàng</option>
+                                <option value="hidden">Ẩn</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger"
+                                    onclick="this.closest('tr').remove()">Xóa</button>
                         </td>
                     </tr>
+
                     <tr>
                         <td><img src="assets/xiaomi.jpg" alt="Xiaomi"></td>
                         <td>3</td>
@@ -84,8 +108,19 @@
                         <td>Xiaomi</td>
                         <td>24.990.000đ</td>
                         <td>12</td>
-                        <td><a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
-                            <button class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()">Xóa</button>
+                        <td>
+                            <select class="form-select form-select-sm product-status"
+                                    onchange="updateStatus(this)">
+                                <option value="selling" selected>Đang bán</option>
+                                <option value="stopped">Ngừng bán</option>
+                                <option value="out_of_stock">Hết hàng</option>
+                                <option value="hidden">Ẩn</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="product-form.html">Sửa</a>
+                            <button class="btn btn-sm btn-danger"
+                                    onclick="this.closest('tr').remove()">Xóa</button>
                         </td>
                     </tr>
                     </tbody>

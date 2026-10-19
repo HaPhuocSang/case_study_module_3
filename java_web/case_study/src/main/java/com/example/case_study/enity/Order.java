@@ -8,7 +8,6 @@ public class Order {
     private int statusId;
     private String receiverName;
     private String receiverPhone;
-    private String receiverEmail;
     private String receiverAddress;
     private Double totalAmount;
     private String description;
@@ -18,12 +17,16 @@ public class Order {
     public Order() {
     }
 
-    public Order(int userId, int statusId, String receiverName, String receiverPhone, String receiverEmail, String receiverAddress, Double totalAmount, String description, Date createTime, Date updateTime) {
+    public Order(int id, int statusId) {
+        this.id = id;
+        this.statusId = statusId;
+    }
+
+    public Order(int userId, int statusId, String receiverName, String receiverPhone, String receiverAddress, Double totalAmount, String description, Date createTime, Date updateTime) {
         this.userId = userId;
         this.statusId = statusId;
         this.receiverName = receiverName;
         this.receiverPhone = receiverPhone;
-        this.receiverEmail = receiverEmail;
         this.receiverAddress = receiverAddress;
         this.totalAmount = totalAmount;
         this.description = description;
@@ -31,13 +34,12 @@ public class Order {
         this.updateTime = updateTime;
     }
 
-    public Order(int id, int userId, int statusId, String receiverName, String receiverPhone, String receiverEmail, String receiverAddress, Double totalAmount, String description, Date createTime, Date updateTime) {
+    public Order(int id, int userId, int statusId, String receiverName, String receiverPhone, String receiverAddress, Double totalAmount, String description, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.statusId = statusId;
         this.receiverName = receiverName;
         this.receiverPhone = receiverPhone;
-        this.receiverEmail = receiverEmail;
         this.receiverAddress = receiverAddress;
         this.totalAmount = totalAmount;
         this.description = description;
@@ -83,14 +85,6 @@ public class Order {
 
     public void setReceiverPhone(String receiverPhone) {
         this.receiverPhone = receiverPhone;
-    }
-
-    public String getReceiverEmail() {
-        return receiverEmail;
-    }
-
-    public void setReceiverEmail(String receiverEmail) {
-        this.receiverEmail = receiverEmail;
     }
 
     public String getReceiverAddress() {

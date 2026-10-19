@@ -18,6 +18,19 @@ public class UserDto {
     public UserDto() {
     }
 
+    public UserDto(int id, String email, String fullName, String phone, String address, String role, String status, Date createdAt, Date lastLogin, int orderCount) {
+        this.id = id;
+        this.email = email;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+        this.role = role;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.lastLogin = lastLogin;
+        this.orderCount = orderCount;
+    }
+
     public UserDto(int id, String email, String password, String fullName, String phone, String address, String role, String status, Date createdAt, Date lastLogin, int orderCount) {
         this.id = id;
         this.email = email;

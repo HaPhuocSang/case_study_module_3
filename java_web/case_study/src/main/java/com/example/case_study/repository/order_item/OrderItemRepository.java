@@ -1,6 +1,6 @@
 package com.example.case_study.repository.order_item;
 
-import com.example.case_study.enity.OrderItem;
+import com.example.case_study.dto.OrderItemDto;
 import com.example.case_study.repository.BaseRepository;
 import com.example.case_study.untils.ConnectDB;
 
@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderItemRepository extends BaseRepository implements IOrderItemRepository {
-    private final String SELECT_ORDER_ITEM_BY_ORDER_ID = "select * from order_item where order_id = ?";
+    private final String SELECT_ORDER_ITEM_BY_ORDER_ID = "select oi.*, p.image from order_items oi join products p on p.id = oi.product_id where oi.order_id = ?;";
     private final String DELETE = "delete from order_items where id =?;";
 
     @Override
-    public List<OrderItem> findOrderItemByOrderId(int orderId) {
+    public List<OrderItemDto> findOrderItemByOrderId(int orderId) {
         Connection connection = ConnectDB.getConnectDB();
-        List<OrderItem> orderItems = new ArrayList<>();
+        List<OrderItemDto> orderItems = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ORDER_ITEM_BY_ORDER_ID);
             preparedStatement.setInt(1, orderId);
@@ -30,7 +30,8 @@ public class OrderItemRepository extends BaseRepository implements IOrderItemRep
                 String productName = resultSet.getString("product_name");
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");
-                orderItems.add(new OrderItem(id, idOrder,productId, productName,price, quantity));
+                String image = resultSet.getString("image");
+                orderItems.add(new OrderItemDto(id, idOrder,productId, productName,price, quantity, image));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

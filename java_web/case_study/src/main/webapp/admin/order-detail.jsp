@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -21,9 +22,15 @@
 <div class="admin-layout">
     <c:import url="/views/layout/admin/sidebar.jsp"/>
     <main class="admin-main">
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2"><h2 class="admin-page-title">Chi
-            tiết đơn hàng #DH001</h2><a href="orders.html" class="btn btn-outline-secondary">← Danh sách đơn hàng</a>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <h2 class="admin-page-title">Chi tiết đơn hàng </h2>
+            <a href="${pageContext.request.contextPath}/admin/orders?action=orders" class="btn btn-outline-secondary">← Danh sách đơn hàng</a>
         </div>
+        <c:if test="${not empty param.message}">
+            <div class="alert alert-warning" role="alert">
+                    ${param.message}
+            </div>
+        </c:if>
         <div class="row g-4">
             <div class="col-lg-7">
                 <div class="admin-card mb-4"><h5>Thông tin sản phẩm</h5>
@@ -35,48 +42,85 @@
                                 <th>Đơn giá</th>
                                 <th>SL</th>
                                 <th>Thành tiền</th>
+                                <th>Thao tác</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><img src="assets/iphone.jpg" alt="iPhone"
-                                         style="width:60px;height:60px;object-fit:contain"> iPhone 16 Pro
-                                </td>
-                                <td>27.990.000đ</td>
-                                <td>1</td>
-                                <td>27.990.000đ</td>
-                            </tr>
+                                <c:forEach var="orderItem" items="${orderItems}">
+                                    <tr>
+                                        <td>
+                                            <img src="${pageContext.request.contextPath}/assets/${orderItem.imageUrl}" alt="iPhone" style="width:60px;height:60px;object-fit:contain"> iPhone 16 Pro
+                                        </td>
+                                        <td><fmt:formatNumber value="${orderItem.price}" pattern="0"/>đ</td>
+                                        <td>${orderItem.quantity}</td>
+                                        <td><fmt:formatNumber value="${orderItem.price * orderItem.quantity}" pattern="0"/>đ</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="getIdOrderItem('${orderItem.id}','${order.id}')">Xóa</button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-end"><p>Tạm tính: 27.990.000đ</p>
-                        <p>Phí vận chuyển: 0đ</p><h5>Tổng cộng: <span class="text-primary">27.990.000đ</span></h5></div>
+                    <div class="text-end">
+                        <p>Tạm tính: <fmt:formatNumber value="${order.totalAmount}" pattern="0"/>đ</p>
+                        <p>Phí vận chuyển: 0đ</p>
+                        <h5>Tổng cộng: <span class="text-primary"><fmt:formatNumber value="${order.totalAmount}" pattern="0"/>đ</span></h5>
+                    </div>
                 </div>
                 <div class="admin-card"><h5>Cập nhật trạng thái</h5>
-                    <div class="d-flex gap-2"><select class="form-select">
-                        <option>Đang xử lý</option>
-                        <option>Đang giao</option>
-                        <option>Đã giao</option>
-                        <option>Đã hủy</option>
-                    </select>
-                        <button class="btn btn-primary"
-                                onclick="alert('Giao diện mẫu: trạng thái sẽ được lưu khi kết nối backend.')">Cập nhật
-                        </button>
-                    </div>
+                    <form action="${pageContext.request.contextPath}/admin/orders?action=orderStatusUpdate" method="post">
+                        <div class="d-flex gap-2">
+                            <input type="hidden" name="orderId" value="${order.id}">
+                            <label for="orderStatus" style="display: none"></label>
+                            <select name="orderStatusId" id="orderStatus" class="form-select">
+                                <c:forEach var="orderStatus" items="${orderStatuses}">
+                                    <option value="${orderStatus.id}" ${orderStatus.name == order.status ? 'selected' : ''}>${orderStatus.name}</option>
+                                </c:forEach>
+                            </select>
+                            <button class="btn btn-primary" type="submit">Cập nhật</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="admin-card"><h5>Thông tin người nhận</h5>
-                    <p class="mb-1"><strong>Nguyễn Văn A</strong></p>
-                    <p class="mb-1">0901234567</p>
-                    <p class="mb-1">vana@example.com</p>
-                    <p class="mb-0">12 Nguyễn Huệ, Đà Nẵng</p>
+                    <p class="mb-1"><strong>${order.receiverName}</strong></p>
+                    <p class="mb-1">${order.receiverPhone}</p>
+                    <p class="mb-0">${order.receiverAddress}</p>
                     <hr>
-                    <p class="mb-1"><strong>Thanh toán:</strong> COD</p>
-                    <p class="mb-0"><strong>Ghi chú:</strong> Giao giờ hành chính</p></div>
+                    <p class="mb-1"><strong>Thanh toán:</strong> ${order.paymentMethod}</p>
+                    <p class="mb-0"><strong>Ghi chú:</strong> ${order.description}</p></div>
             </div>
         </div>
     </main>
 </div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form action="${pageContext.request.contextPath}/admin/orders?action=orderItemDelete" method="post">
+        <input type="hidden"  name="orderItemId" id="orderItemId">
+        <input type="hidden"  name="orderId" id="orderId">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Xác nhận xóa?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xóa sản phẩm này?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function getIdOrderItem(orderItemId, orderId) {
+        document.getElementById("orderItemId").value = orderItemId;
+        document.getElementById("orderId").value = orderId;
+    }
+</script>
 </body>
 </html>

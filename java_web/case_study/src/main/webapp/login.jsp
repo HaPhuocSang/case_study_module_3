@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -23,16 +23,27 @@
         <div class="auth-logo">
             <div class="logo-text">Phone<span>Store</span></div>
             <p class="text-muted">Đăng nhập tài khoản</p></div>
-        <form>
-            <div class="mb-3"><label class="form-label">Email / Số điện thoại</label><input type="text" class="form-control" placeholder="Nhập email hoặc số điện thoại">
+        <form action="${pageContext.request.contextPath}/?action=login" method="post">
+            <c:if test="${not empty param.message}">
+                <div class="alert alert-warning" role="alert">
+                        ${param.message}
+                </div>
+            </c:if>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email / Số điện thoại</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Nhập email hoặc số điện thoại">
             </div>
-            <div class="mb-3"><label class="form-label">Mật khẩu</label><input type="password" class="form-control" placeholder="Nhập mật khẩu"></div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu">
+            </div>
             <div class="d-flex justify-content-between mb-4">
                 <div><input type="checkbox"> Ghi nhớ đăng nhập</div>
-                <a href="#">Quên mật khẩu?</a></div>
-            <button class="btn btn-primary w-100 py-2">Đăng nhập</button>
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit">Đăng nhập</button>
         </form>
-        <p class="text-center mt-4 mb-0">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p></div>
+        <p class="text-center mt-4 mb-0">Chưa có tài khoản? <a href="${pageContext.request.contextPath}/?action=register">Đăng ký ngay</a></p></div>
 </main>
 <c:import url="views/layout/user/footer.jsp"/>
 <c:import url="views/layout/user/cart-panel.jsp"/>

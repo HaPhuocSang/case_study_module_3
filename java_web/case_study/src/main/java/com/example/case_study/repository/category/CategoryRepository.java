@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryRepository extends BaseRepository implements ICategoryRepository {
-    private final String SELECT_ALL = "select * from categories;";
+    private final String SELECT_ALL = "select * from categories order by id;";
     private final String INSERT_INTO = "insert into categories (name) values (?)";
     private final String DELETE = "delete from categories where id =?;";
     @Override

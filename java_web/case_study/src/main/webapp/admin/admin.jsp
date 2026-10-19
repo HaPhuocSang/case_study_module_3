@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 17/10/2026
-  Time: 6:33 CH
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="vi">
@@ -25,17 +18,17 @@
         <div class="row g-3 mb-4">
             <div class="col-sm-6 col-xl-3">
                 <div class="stat-card"><p class="text-muted mb-2">Sản phẩm</p>
-                    <div class="stat-number">120</div>
+                    <div class="stat-number">${quantityProduct}</div>
                     <a href="products.html">Quản lý sản phẩm →</a></div>
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="stat-card"><p class="text-muted mb-2">Đơn hàng</p>
-                    <div class="stat-number">85</div>
+                    <div class="stat-number">${quantityUser}</div>
                     <a href="orders.html">Xem đơn hàng →</a></div>
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="stat-card"><p class="text-muted mb-2">Khách hàng</p>
-                    <div class="stat-number">350</div>
+                    <div class="stat-number">${quantityOrder}</div>
                     <a href="customers.html">Xem khách hàng →</a></div>
             </div>
             <div class="col-sm-6 col-xl-3">

@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class UserRepository extends BaseRepository implements IUserRepository{
-    private final String SELECT_ALL_USER = "select u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name as role, us.name as status, count(o.id) as order_count from users u join roles r on u.role_id = r.id left join orders o on u.id = o.user_id join user_statuses us on u.status_id = us.id where r.name = 'users' group by u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name, us.name order by u.last_login desc;";
+    private final String SELECT_ALL_USER = "select u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name as role, us.name as status, count(o.id) as order_count from users u join roles r on u.role_id = r.id left join orders o on u.id = o.user_id join user_statuses us on u.status_id = us.id where r.name = 'user' group by u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name, us.name order by u.last_login desc;";
     private final String DELETE = "delete from users where id =?;";
     private final String LOGIN = "select u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name as role, us.name as status, count(o.id) as order_count from users u join roles r on u.role_id = r.id left join orders o on u.id = o.user_id join user_statuses us on u.status_id = us.id where u.email = ? and u.password = ? group by u.id, u.email, u.password, u.full_name, u.phone, u.address, u.created_at, u.last_login, r.name, us.name order by u.last_login desc;";
     @Override

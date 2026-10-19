@@ -17,5 +17,7 @@ public interface IProductRepository extends IRepository<ProductDto> {
 
     boolean updateProduct(Product product);
 
+    boolean updateProductStatus(int productId, int statusId);
+
     boolean deleteProduct(int id);
 }

@@ -20,6 +20,7 @@ public class ProductRepository extends BaseRepository implements IProductReposit
     private final String SEARCH_BY_NAME = "select p.*,c.name as category, ps.name as status from products p join categories c on p.category_id = c.id join product_statuses ps on p.status_id = ps.id where p.name like concat('%', ?, '%') order by p.updated_at desc;";
     private final String INSERT_INTO = "insert into products (category_id, status_id, name, price, discount_price, quantity, description, image) values (?, ?, ?, ?, ?, ?, ?, ?);";
     private final String UPDATE = "update products set category_id = ?, status_id = ?, name = ?, price = ?, discount_price = ?, quantity = ?, description = ?, image = ? where id = ?;";
+    private final String UPDATE_STATUS = "update products set status_id = ? where id = ?;";
     private final String DELETE = "delete from products where id =?;";
 
     @Override
@@ -94,6 +95,22 @@ public class ProductRepository extends BaseRepository implements IProductReposit
         }
         return false;
     }
+
+    @Override
+    public boolean updateProductStatus(int productId, int statusId) {
+        Connection connection = ConnectDB.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS);
+            preparedStatement.setInt(1, statusId);
+            preparedStatement.setInt(2, productId);
+            int rowEffect = preparedStatement.executeUpdate();
+            return rowEffect == 1;
+        } catch (SQLException e) {
+            System.out.println("lỗi DB");
+        }
+        return false;
+    }
+
 
     @Override
     public boolean deleteProduct(int id) {
