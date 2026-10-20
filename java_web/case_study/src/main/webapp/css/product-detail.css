@@ -1,0 +1,191 @@
+.detail-page {
+    max-width: 1200px;
+    margin: 35px auto 60px
+}
+
+.crumb {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 20px
+}
+
+.crumb a {
+    color: #1475f5;
+    text-decoration: none
+}
+
+.detail-card {
+    border: 1px solid #e3e8ef;
+    border-radius: 14px;
+    padding: 28px;
+    background: #fff
+}
+
+.detail-image {
+    height: 430px;
+    border: 1px solid #edf0f4;
+    border-radius: 12px;
+    background: #fafbfd;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.detail-image img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain
+}
+
+.detail-brand {
+    color: #64748b;
+    font-size: 14px
+}
+
+.detail-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #122342
+}
+
+.rating {
+    color: #ffb300
+}
+
+.rating span {
+    color: #64748b;
+    font-size: 12px
+}
+
+.price {
+    font-size: 27px;
+    font-weight: 800;
+    color: #f2293c
+}
+
+.old {
+    color: #718096;
+    font-size: 14px;
+    margin-left: 10px
+}
+
+.desc {
+    color: #596a83;
+    line-height: 1.7;
+    margin: 20px 0
+}
+
+.option-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 16px 0 8px
+}
+
+.option {
+    border: 1px solid #d8e0ea;
+    background: #fff;
+    border-radius: 7px;
+    padding: 8px 15px;
+    font-size: 13px;
+    margin-right: 5px
+}
+
+.option.active {
+    border-color: #1475f5;
+    color: #1475f5;
+    background: #eef6ff
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    margin-top: 20px
+}
+
+.qty button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #d8e0ea;
+    background: #fff
+}
+
+.qty span {
+    width: 42px;
+    text-align: center;
+    font-weight: 600
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px
+}
+
+.actions button {
+    height: 46px;
+    border-radius: 7px;
+    font-weight: 700;
+    flex: 1
+}
+
+.add {
+    border: 0;
+    background: #1475f5;
+    color: #fff
+}
+
+.buy {
+    border: 1px solid #1475f5;
+    background: #fff;
+    color: #1475f5
+}
+
+.info {
+    margin-top: 25px
+}
+
+.info-box {
+    border: 1px solid #e5eaf1;
+    border-radius: 9px;
+    padding: 15px;
+    height: 100%
+}
+
+.info-box b, .info-box small {
+    display: block
+}
+
+.info-box small {
+    color: #718096;
+    margin-top: 5px
+}
+
+.toast-msg {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+    background: #14284b;
+    color: #fff;
+    padding: 13px 18px;
+    border-radius: 8px;
+    display: none
+}
+
+@media (max-width: 767px) {
+    .detail-card {
+        padding: 15px
+    }
+
+    .detail-image {
+        height: 320px
+    }
+
+    .detail-title {
+        font-size: 25px
+    }
+
+    .actions {
+        flex-direction: column
+    }
+}
