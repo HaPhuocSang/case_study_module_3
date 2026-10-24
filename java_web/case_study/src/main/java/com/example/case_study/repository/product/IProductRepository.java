@@ -13,6 +13,8 @@ public interface IProductRepository extends IRepository<ProductDto> {
 
     List<ProductDto> searchByName(String name);
 
+    ProductDto findById(int id);
+
     boolean addProduct(Product product);
 
     boolean updateProduct(Product product);

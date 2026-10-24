@@ -23,7 +23,7 @@
         <div class="auth-logo">
             <div class="logo-text">Phone<span>Store</span></div>
             <p class="text-muted">Đăng nhập tài khoản</p></div>
-        <form action="${pageContext.request.contextPath}/?action=login" method="post">
+        <form action="${pageContext.request.contextPath}/user?action=login" method="post">
             <c:if test="${not empty param.message}">
                 <div class="alert alert-warning" role="alert">
                         ${param.message}
@@ -31,11 +31,11 @@
             </c:if>
             <div class="mb-3">
                 <label for="email" class="form-label">Email / Số điện thoại</label>
-                <input type="text" class="form-control" name="email" id="email" placeholder="Nhập email hoặc số điện thoại">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email hoặc số điện thoại" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu" required>
             </div>
             <div class="d-flex justify-content-between mb-4">
                 <div><input type="checkbox"> Ghi nhớ đăng nhập</div>
@@ -43,7 +43,7 @@
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Đăng nhập</button>
         </form>
-        <p class="text-center mt-4 mb-0">Chưa có tài khoản? <a href="${pageContext.request.contextPath}/?action=register">Đăng ký ngay</a></p></div>
+        <p class="text-center mt-4 mb-0">Chưa có tài khoản? <a href="${pageContext.request.contextPath}/user?action=register">Đăng ký ngay</a></p></div>
 </main>
 <c:import url="views/layout/user/footer.jsp"/>
 <c:import url="views/layout/user/cart-panel.jsp"/>

@@ -24,4 +24,22 @@ public class UserService implements IUserService {
     public List<UserDto> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public boolean emailExists(String email) {
+        return userRepository.emailExists(email);
+    }
+
+    @Override
+    public boolean register(
+            String email,
+            String password,
+            String fullName,
+            String phone,
+            String address) {
+
+        return userRepository.register(
+                email, password, fullName, phone, address
+        );
+    }
 }

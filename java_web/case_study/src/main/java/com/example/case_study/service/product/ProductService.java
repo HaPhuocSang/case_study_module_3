@@ -26,6 +26,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public ProductDto findById(int id) {
+        return productRepository.findById(id);
+    }
+
+    @Override
     public boolean addProduct(Product product) {
         return productRepository.addProduct(product);
     }

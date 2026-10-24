@@ -12,27 +12,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Chi tiết sản phẩm - PhoneStore</title>
+    <title>${product.name} - PhoneStore</title>
     <c:import url="views/library/user/index.jsp"/>
     <c:import url="views/library/user/product-detail.jsp"/>
 </head>
 <body>
 <c:import url="views/layout/user/header.jsp"/>
 <main class="container detail-page">
-    <div class="crumb"><a href="index.html">Trang chủ</a> › <span id="crumbName">Chi tiết sản phẩm</span></div>
+    <div class="crumb"><a href="${pageContext.request.contextPath}/products">Sản phẩm</a>›
+        <span id="crumbName"><c:out value="${product.name}"/></span>
+    </div>
     <div class="detail-card">
         <div class="row g-4">
             <div class="col-lg-6">
-                <div class="detail-image"><img id="productImage" alt=""></div>
+                <div class="detail-image"><img id="productImage" src="${pageContext.request.contextPath}/assets/${product.imageUrl}" alt="<c:out value='${product.name}'/>"></div>
             </div>
             <div class="col-lg-6">
-                <div class="detail-brand" id="brand"></div>
-                <h1 class="detail-title" id="name"></h1>
+                <div class="detail-brand" id="brand"><c:out value="${product.category}"/></div>
+                <h1 class="detail-title" id="name"><c:out value="${product.name}"/></h1>
                 <div class="rating">★★★★★ <span id="reviews"></span></div>
-                <div class="mt-3"><span class="price" id="price"></span>
-                    <del class="old" id="oldPrice"></del>
+                <div class="mt-3">
+                    <c:choose>
+                        <c:when test="${product.discountPrice > 0}">
+            <span class="price" id="price"><fmt:formatNumber value="${product.discountPrice}" type="number" groupingUsed="true"/>đ</span>
+                            <del class="old" id="oldPrice"><fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>đ</del>
+                        </c:when>
+
+                        <c:otherwise>
+            <span class="price" id="price"><fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>đ</span>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-                <p class="desc" id="description"></p>
+                <p class="desc" id="description"><c:out value="${product.description}" default="Chưa có mô tả cho sản phẩm này."/></p>
                 <div class="option-title">Màu sắc</div>
                 <button class="option active">Đen</button>
                 <button class="option">Trắng</button>
@@ -64,7 +75,8 @@
             <div class="info-box"><b>💳 Thanh toán an toàn</b><small>Hỗ trợ nhiều phương thức thanh toán.</small></div>
         </div>
     </div>
-    <a href="index.html" style="display:inline-block;margin-top:22px;color:#1475f5;text-decoration:none">← Quay lại trang sản phẩm</a></main>
+    <a href="${pageContext.request.contextPath}/products" style="display:inline-block;margin-top:22px;color:#1475f5;text-decoration:none">← Quay lại trang sản phẩm</a>
+    <main>
 <c:import url="views/layout/user/footer.jsp"/>
 <c:import url="views/layout/user/cart-panel.jsp"/>
 <div id="toast" class="toast-msg">Đã thêm sản phẩm vào giỏ hàng!</div>
