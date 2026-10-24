@@ -23,18 +23,24 @@ public class UserRepository extends BaseRepository implements IUserRepository{
 
     @Override
     public UserDto login(String email, String password) {
-        Connection connection = ConnectDB.getConnectDB();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(LOGIN);
+        try (Connection connection = ConnectDB.getConnectDB();
+             PreparedStatement preparedStatement =
+                     connection.prepareStatement(LOGIN)) {
+
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return getUserFromResultSet(resultSet);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return getUserFromResultSet(resultSet);
+                }
             }
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            throw new RuntimeException("Lỗi SQL khi đăng nhập", e);
         }
+
         return null;
     }
 
@@ -66,6 +72,61 @@ public class UserRepository extends BaseRepository implements IUserRepository{
         String role = resultSet.getString("role");
         String status = resultSet.getString("status");
         return new UserDto(id, email, password,fullName, phone, address, role, status, createdAt, lastLogin, orderCount);
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        String sql = "SELECT 1 FROM users WHERE email = ?";
+
+        try (Connection connection = ConnectDB.getConnectDB();
+             PreparedStatement statement =
+                     connection.prepareStatement(sql)) {
+
+            statement.setString(1, email);
+
+            try (ResultSet rs = statement.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean register(
+            String email,
+            String password,
+            String fullName,
+            String phone,
+            String address) {
+
+        String sql =
+                "INSERT INTO users " +
+                        "(email, password, full_name, phone, address, role_id, status_id) " +
+                        "SELECT ?, ?, ?, ?, ?, r.id, s.id " +
+                        "FROM roles r CROSS JOIN user_statuses s " +
+                        "WHERE r.name = 'user' AND s.name = 'active'";
+
+        try (Connection connection = ConnectDB.getConnectDB();
+             PreparedStatement statement =
+                     connection.prepareStatement(sql)) {
+
+            statement.setString(1, email);
+            statement.setString(2, password);
+            statement.setString(3, fullName);
+            statement.setString(4, phone);
+            statement.setString(5, address);
+
+            return statement.executeUpdate() == 1;
+
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1062) {
+                return false;
+            }
+
+            throw new RuntimeException(e);
+        }
     }
 
 }

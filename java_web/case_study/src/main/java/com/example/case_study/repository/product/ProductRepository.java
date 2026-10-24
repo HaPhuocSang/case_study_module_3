@@ -18,6 +18,7 @@ public class ProductRepository extends BaseRepository implements IProductReposit
     private final String SELECT_ALL_WHERE_STATUS_NOT_HIDDEN = "select p.*,c.name as category, ps.name as status from products p join categories c on p.category_id = c.id join product_statuses ps on p.status_id = ps.id where ps.name <> 'hidden' order by p.updated_at desc;";
     private final String FIND_BY_CATEGORY_ID = "select p.*,c.name as category, ps.name as status from products p join categories c on p.category_id = c.id join product_statuses ps on p.status_id = ps.id where c.id = ? order by p.updated_at desc;";
     private final String SEARCH_BY_NAME = "select p.*,c.name as category, ps.name as status from products p join categories c on p.category_id = c.id join product_statuses ps on p.status_id = ps.id where p.name like concat('%', ?, '%') order by p.updated_at desc;";
+    private final String FIND_BY_ID = "SELECT p.*, c.name AS category, ps.name AS status " + "FROM products p " + "JOIN categories c ON p.category_id = c.id " + "JOIN product_statuses ps ON p.status_id = ps.id " + "WHERE p.id = ?";
     private final String INSERT_INTO = "insert into products (category_id, status_id, name, price, discount_price, quantity, description, image) values (?, ?, ?, ?, ?, ?, ?, ?);";
     private final String UPDATE = "update products set category_id = ?, status_id = ?, name = ?, price = ?, discount_price = ?, quantity = ?, description = ?, image = ? where id = ?;";
     private final String UPDATE_STATUS = "update products set status_id = ? where id = ?;";
@@ -65,6 +66,27 @@ public class ProductRepository extends BaseRepository implements IProductReposit
             throw new RuntimeException(e);
         }
         return productList;
+    }
+
+    @Override
+    public ProductDto findById(int id) {
+        String sql = FIND_BY_ID;
+
+        try (Connection connection = ConnectDB.getConnectDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return getProductFromResultSet(resultSet);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     @Override

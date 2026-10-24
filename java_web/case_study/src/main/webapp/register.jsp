@@ -23,18 +23,18 @@
         <div class="auth-logo">
             <div>Phone<span>Store</span></div>
             <p class="text-muted">Tạo tài khoản mới</p></div>
-        <form>
+        <form action="${pageContext.request.contextPath}/user?action=register" method="post">
             <div class="row g-3">
-                <div class="col-md-6"><label class="form-label">Họ và tên</label><input class="form-control" placeholder="Nguyễn Văn A">
+                <div class="col-md-6"><label class="form-label">Họ và tên</label><input type="text" name="fullName" class="form-control" placeholder="Nguyễn Văn A" required>
                 </div>
-                <div class="col-md-6"><label class="form-label">Số điện thoại</label><input class="form-control" placeholder="0123456789">
+                <div class="col-md-6"><label class="form-label">Số điện thoại</label><input type="text" name="phone" class="form-control" placeholder="0123456789" required>
                 </div>
-                <div class="col-12"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="example@gmail.com"></div>
-                <div class="col-md-6"><label class="form-label">Mật khẩu</label><input type="password" class="form-control" placeholder="Nhập mật khẩu">
+                <div class="col-12"><label class="form-label">Email</label><input type="email" name="email" class="form-control" placeholder="example@gmail.com" required></div>
+                <div class="col-md-6"><label class="form-label">Mật khẩu</label><input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
                 </div>
-                <div class="col-md-6"><label class="form-label">Xác nhận mật khẩu</label><input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                <div class="col-md-6"><label class="form-label">Xác nhận mật khẩu</label><input type="password" name="confirmPassword" class="form-control" placeholder="Nhập lại mật khẩu" required>
                 </div>
-                <div class="col-12"><label class="form-label">Địa chỉ</label><textarea class="form-control" rows="2" placeholder="Nhập địa chỉ"></textarea>
+                <div class="col-12"><label class="form-label">Địa chỉ</label><textarea name="address" class="form-control" rows="2" placeholder="Nhập địa chỉ" required></textarea>
                 </div>
                 <div class="col-12">
                     <div><input type="checkbox"> Tôi đồng ý với điều khoản sử dụng</div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </form>
-        <p class="text-center mt-4 mb-0">Đã có tài khoản? <a href="login.html">Đăng nhập</a></p></div>
+        <p class="text-center mt-4 mb-0">Đã có tài khoản? <a href="${pageContext.request.contextPath}/user?action=login">Đăng nhập</a></p></div>
 </main>
 <c:import url="views/layout/user/footer.jsp"/>
 <c:import url="views/layout/user/cart-panel.jsp"/>

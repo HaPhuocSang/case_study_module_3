@@ -28,7 +28,9 @@
             <a  href="feedback-user.html">Phản hồi</a>
         </nav>
         <div class="header-actions">
-            <form class="search-box" action="search.html" method="get">
+            <form class="search-box"
+                  action="${pageContext.request.contextPath}/products"
+                  method="get">
                 <input type="text" name="keyword" placeholder="Tìm kiếm điện thoại..." aria-label="Tìm kiếm điện thoại">
                 <button type="submit" aria-label="Tìm kiếm">⌕</button>
             </form>
@@ -38,8 +40,19 @@
                     <li><a class="dropdown-item" href="profile.html">👤 Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="feedback-user.html">✉ Phản hồi & hỗ trợ</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/?action=login">↪ Đăng nhập</a></li>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/?action=register">＋ Đăng ký</a></li>
+                    <li>
+                        <a class="dropdown-item"
+                           href="${pageContext.request.contextPath}/user?action=login">
+                            ↪ Đăng nhập
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item"
+                           href="${pageContext.request.contextPath}/user?action=register">
+                            ＋ Đăng ký
+                        </a>
+                    </li>
                 </ul>
             </div>
             <button class="icon-btn cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartPanel">
